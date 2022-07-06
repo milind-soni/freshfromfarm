@@ -1,0 +1,41 @@
+html.Div([
+        html.Div([
+            # Map-legend
+           
+            # Borough_checklist
+            html.Label(children=['SKU: '], style=blackbold),
+            dcc.Checklist(id='boro_name',
+                    options=[{'label':str(b),'value':b} for b in sku_list],
+                    value=[b for b in sku_list],
+            ),
+
+            # Recycling_type_checklist
+            html.Label(children=['Quality Index '], style=blackbold),
+            dcc.Checklist(id='recycling_type',
+                    options=[{'label':str(b),'value':b} for b in quality_list],
+                    value=[b for b in quality_list],
+            ),
+
+            # Web_link
+            html.Br(),
+            html.Label(['Website:'],style=blackbold),
+            html.Pre(id='web_link', children=[],
+            style={'white-space': 'pre-wrap','word-break': 'break-all',
+                 'border': '1px solid black','text-align': 'center',
+                 'padding': '12px 12px 12px 12px', 'color':'blue',
+                 'margin-top': '3px'}
+            ),
+
+        ], className='three columns'
+        ),
+
+        # Map
+        html.Div([
+            dcc.Graph(id='graph', config={'displayModeBar': False, 'scrollZoom': True},
+                style={'background':'#00FC87','padding-bottom':'2px','padding-left':'2px','height':'100vh'}
+            )
+        ], className='nine columns'
+        ),
+
+    ], className='row'
+    ),
